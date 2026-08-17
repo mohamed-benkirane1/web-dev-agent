@@ -1,0 +1,1394 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Anti-Slop SOP — Figure Set</title>
+<style>
+/* ===== shared base ===== */
+:root{
+  --paper:#FBFAF7;
+  --ink:#141414;
+  --grey:#8B8B85;
+  --line:#E3E1DA;
+  --blue:#4A8FE7;
+  --blue-soft:#EAF2FD;
+  --terra:#D97757;
+  --green:#3FA06A;
+  --red:#D8453E;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:#FBFAF7}
+body{
+  font-family:'Inter','Segoe UI',system-ui,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:'JetBrains Mono','Cascadia Code',Consolas,monospace}
+.fig{padding:56px 64px}
+.eyebrow{
+  font-family:'JetBrains Mono','Cascadia Code',Consolas,monospace;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--grey);margin-bottom:14px;
+}
+.fig-title{font-size:34px;font-weight:600;letter-spacing:-.02em;line-height:1.15}
+.fig-sub{font-size:16px;color:var(--grey);margin-top:10px;max-width:760px;line-height:1.5}
+.rule{height:1px;background:var(--line);margin:28px 0 34px}
+.note{font-size:13px;color:var(--grey);line-height:1.5}
+
+/* ===== deck shell ===== */
+html{background:#EFEDE7}
+body{background:#EFEDE7;padding:40px 24px 64px}
+.deck{width:max-content;margin:0 auto}
+
+.masthead{background:var(--paper);border:1px solid #DDDBD4;border-radius:8px;
+  padding:44px 56px 40px;margin-bottom:40px;max-width:1560px}
+.masthead .kick{font-family:'JetBrains Mono',Consolas,monospace;font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--grey);margin-bottom:14px}
+.masthead h1{font-size:44px;font-weight:600;letter-spacing:-.025em;line-height:1.05}
+.masthead .sub{font-size:16px;color:var(--grey);margin-top:12px;max-width:820px;line-height:1.55}
+.masthead .meta{margin-top:22px;padding-top:20px;border-top:1px solid var(--line);
+  display:flex;gap:34px;flex-wrap:wrap}
+.masthead .meta div{font-family:'JetBrains Mono',Consolas,monospace;font-size:11px;
+  letter-spacing:.08em;color:var(--grey);text-transform:uppercase}
+.masthead .meta b{color:var(--ink);font-weight:600}
+
+.index{margin-top:28px;display:grid;grid-template-columns:repeat(2,1fr);gap:0 34px}
+.ix{display:flex;gap:14px;align-items:baseline;text-decoration:none;color:inherit;
+  padding:11px 0;border-bottom:1px solid #EDEBE4}
+.ix .n{font-family:'JetBrains Mono',Consolas,monospace;font-size:11px;color:var(--grey);
+  flex:0 0 auto;padding-top:2px}
+.ix .tx{display:flex;flex-direction:column;gap:2px}
+.ix .tx b{font-size:14.5px;font-weight:600;letter-spacing:-.01em}
+.ix .tx i{font-style:normal;font-size:11.5px;color:var(--grey)}
+.ix:hover .tx b{color:var(--blue)}
+
+.sheet{background:var(--paper);border:1px solid #DDDBD4;border-radius:8px;
+  margin:0 auto 40px;position:relative;overflow:hidden}
+.sheet-tab{position:absolute;top:0;right:0;z-index:20;
+  font-family:'JetBrains Mono',Consolas,monospace;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--grey);background:#F2F0EA;
+  border-left:1px solid #E4E2DB;border-bottom:1px solid #E4E2DB;
+  border-radius:0 8px 0 6px;padding:8px 14px}
+
+.colophon{max-width:1560px;margin:0 auto;padding:26px 56px 8px;
+  font-family:'JetBrains Mono',Consolas,monospace;font-size:11px;color:#9A9A93;
+  letter-spacing:.06em;text-align:center;line-height:1.8}
+
+@media print{
+  html,body{background:#fff;padding:0}
+  .masthead,.colophon{display:none}
+  .sheet{border:0;border-radius:0;margin:0;break-after:page;page-break-after:always}
+  .sheet-tab{display:none}
+}
+
+/* ===== figure 01 — fig-01-the-average.html ===== */
+#f01{width:1500px}
+#f01 .fig{padding:60px 64px 54px}
+#f01 .stage{display:grid;grid-template-columns:1fr 220px 1fr;gap:0;align-items:center;margin-top:8px}
+#f01 .col-label{
+  font-family:'JetBrains Mono',Consolas,monospace;font-size:11.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--grey);margin-bottom:18px;
+}
+#f01 .corpus{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+#f01 .tn{height:72px;border-radius:3px;border:1px solid var(--line);overflow:hidden;background:#fff;
+    display:flex;flex-direction:column;padding:6px;gap:4px;opacity:.85}
+#f01 .tn .b{border-radius:1.5px}
+#f01 .tn .hd{height:7px;width:60%}
+#f01 .tn .tx{height:3.5px;width:85%;background:#DDDBD4}
+#f01 .tn .tx.s{width:55%}
+#f01 .tn .img{flex:1;border-radius:2px}
+#f01 .tn.r1 .hd{background:#1B1B1B}
+#f01 .tn.r1 .img{background:#C7D9C2}
+#f01 .tn.r2 .hd{background:#7A4A2B}
+#f01 .tn.r2 .img{background:#E8D9C4}
+#f01 .tn.r3 .hd{background:#1B3A5C}
+#f01 .tn.r3 .img{background:#BFD2E6}
+#f01 .tn.r4 .hd{background:#3B1B1B}
+#f01 .tn.r4 .img{background:#E0BFB6}
+#f01 .tn.r5 .hd{background:#1B1B1B}
+#f01 .tn.r5 .img{background:#EFEDE6}
+#f01 .tn.r6 .hd{background:#2E4A34}
+#f01 .tn.r6 .img{background:#D3E0CE}
+#f01 .tn.r7 .hd{background:#4A2E5C}
+#f01 .tn.r7 .img{background:#DCCFE6}
+#f01 .tn.r8 .hd{background:#5C4A1B}
+#f01 .tn.r8 .img{background:#EFE2C0}
+#f01 .tn.r9 .hd{background:#1B1B1B}
+#f01 .tn.r9 .img{background:#D6D4CC}
+#f01 .tn.r10 .hd{background:#0F2E2E}
+#f01 .tn.r10 .img{background:#C0DCDA}
+#f01 .tn.r11 .hd{background:#5C1B2E}
+#f01 .tn.r11 .img{background:#E8C4D0}
+#f01 .tn.r12 .hd{background:#2B2B4A}
+#f01 .tn.r12 .img{background:#C9C9E0}
+#f01 .funnel{display:flex;flex-direction:column;align-items:center;gap:14px;padding:0 26px}
+#f01 .prompt-chip{
+  font-family:'JetBrains Mono',Consolas,monospace;font-size:12px;line-height:1.5;
+  background:#fff;border:1px solid var(--line);border-radius:4px;padding:10px 12px;
+  color:var(--ink);text-align:center;width:100%;
+}
+#f01 .prompt-chip .q{color:var(--grey)}
+#f01 .arrow-wrap{display:flex;flex-direction:column;align-items:center;gap:7px;width:100%}
+#f01 .arrow{width:100%;height:2px;background:var(--ink);position:relative}
+#f01 .arrow:after{content:"";position:absolute;right:-1px;top:-4px;border-left:9px solid var(--ink);
+  border-top:5px solid transparent;border-bottom:5px solid transparent}
+#f01 .arrow-cap{font-family:'JetBrains Mono',Consolas,monospace;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--grey)}
+#f01 .avg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+#f01 .slop{height:150px;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:#fff;
+  display:flex;flex-direction:column}
+#f01 .slop .hero{height:64px;background:linear-gradient(135deg,#7C5CE0 0%,#5B7BE8 55%,#C46BD8 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+#f01 .slop .hero .h{height:5px;width:56%;background:rgba(255,255,255,.92);border-radius:1px}
+#f01 .slop .hero .h2{height:3px;width:38%;background:rgba(255,255,255,.55);border-radius:1px}
+#f01 .slop .hero .btn{height:8px;width:26%;background:#fff;border-radius:4px;margin-top:3px}
+#f01 .slop .cards{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:9px}
+#f01 .slop .card{background:#F4F3F0;border-radius:5px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:4px;padding:5px}
+#f01 .slop .card .ic{width:14px;height:14px;border-radius:4px;background:#C9C7C0}
+#f01 .slop .card .l{height:3px;width:70%;background:#D6D4CD;border-radius:1px}
+#f01 .slop .card .l2{height:2.5px;width:52%;background:#E2E0D9;border-radius:1px}
+#f01 .verdict{
+  margin-top:22px;display:flex;align-items:center;gap:10px;
+}
+#f01 .verdict .tag{
+  font-family:'JetBrains Mono',Consolas,monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;background:var(--ink);color:#fff;padding:5px 10px;border-radius:3px;
+}
+#f01 .verdict .txt{font-size:14.5px;color:var(--ink)}
+#f01 .band{margin-top:44px;border-top:1px solid var(--line);padding-top:30px;
+  display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+#f01 .band h3{font-size:19px;font-weight:600;margin-bottom:9px;letter-spacing:-.01em}
+#f01 .band p{font-size:15px;line-height:1.62;color:#3A3A38}
+#f01 .band .accent{color:var(--terra);font-weight:600}
+#f01 .pill{display:inline-block;font-family:'JetBrains Mono',Consolas,monospace;font-size:11px;
+  border:1px solid var(--line);background:#fff;border-radius:3px;padding:4px 9px;margin:0 5px 6px 0;color:#55554F}
+#f01 .pill.on{border-color:var(--blue);background:var(--blue-soft);color:#1F4E86}
+/* ===== figure 02 — fig-02-workflow.html ===== */
+#f02{width:1500px}
+#f02 .fig{padding:60px 64px 58px}
+#f02 .zones{display:grid;grid-template-columns:3fr 3fr 2fr;gap:20px;margin-top:6px}
+#f02 .zone{border:1px solid var(--line);border-radius:6px;background:#fff;padding:0 0 20px}
+#f02 .zone-hd{padding:14px 18px 13px;border-bottom:1px solid var(--line);display:flex;
+  align-items:baseline;justify-content:space-between;gap:12px}
+#f02 .zone-hd .t{font-family:'JetBrains Mono',Consolas,monospace;font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink);font-weight:600}
+#f02 .zone-hd .s{font-size:12.5px;color:var(--grey)}
+#f02 .zone.hero-zone{border-color:var(--blue);border-width:1.5px}
+#f02 .zone.hero-zone .zone-hd{background:var(--blue-soft);border-bottom-color:#CBDFF8}
+#f02 .zone.hero-zone .zone-hd .t{color:#1F4E86}
+#f02 .zone.hero-zone .zone-hd .s{color:#3A6EA8}
+#f02 .steps{display:flex;padding:18px 18px 0;gap:14px}
+#f02 .step{flex:1;display:flex;flex-direction:column;gap:8px}
+#f02 .step .num{font-family:'JetBrains Mono',Consolas,monospace;font-size:11px;color:var(--grey);
+  letter-spacing:.08em}
+#f02 .step .nm{font-size:16.5px;font-weight:600;letter-spacing:-.01em;line-height:1.2}
+#f02 .step .ds{font-size:13px;line-height:1.5;color:#55554F}
+#f02 .step .out{font-family:'JetBrains Mono',Consolas,monospace;font-size:10.5px;color:#1F4E86;
+  background:var(--blue-soft);border-radius:3px;padding:4px 7px;display:inline-block;
+  align-self:flex-start;margin-top:2px;line-height:1.35}
+#f02 .step .out.plain{color:#55554F;background:#F3F2EE}
+#f02 .divider-v{width:1px;background:var(--line);flex:0 0 1px;margin:2px 0}
+#f02 .callout{
+  margin-top:34px;border:1.5px solid var(--terra);border-radius:6px;background:#FDF4F0;
+  padding:20px 24px;display:flex;gap:20px;align-items:flex-start
+}
+#f02 .callout .mark{font-family:'JetBrains Mono',Consolas,monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;background:var(--terra);color:#fff;padding:5px 10px;border-radius:3px;
+  white-space:nowrap;margin-top:2px}
+#f02 .callout p{font-size:16px;line-height:1.6;color:#2A2A28}
+#f02 .callout strong{color:var(--ink)}
+#f02 .loopbar{margin-top:24px;display:flex;align-items:center;gap:14px;
+  border:1px dashed var(--line);border-radius:6px;padding:13px 18px;background:#fff}
+#f02 .loopbar .ic{font-family:'JetBrains Mono',Consolas,monospace;font-size:12px;color:var(--blue);
+  letter-spacing:.1em;font-weight:600;white-space:nowrap}
+#f02 .loopbar .tx{font-size:14px;color:#4A4A46;line-height:1.5}
+#f02 .loopbar .tx b{color:var(--ink)}
+/* ===== figure 03 — fig-03-slop-vs-directed.html ===== */
+#f03{width:1560px}
+#f03 .fig{padding:58px 60px 54px}
+#f03 .cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:4px}
+#f03 .colhead{display:flex;align-items:center;gap:11px;margin-bottom:16px}
+#f03 .badge{font-family:'JetBrains Mono',Consolas,monospace;font-size:11px;letter-spacing:.13em;
+  text-transform:uppercase;padding:5px 10px;border-radius:3px;color:#fff}
+#f03 .badge.bad{background:var(--red)}
+#f03 .badge.good{background:var(--ink)}
+#f03 .colhead .h{font-size:19px;font-weight:600;letter-spacing:-.015em}
+#f03 .colhead .p{font-size:13.5px;color:var(--grey)}
+#f03 .screen{border:1px solid var(--line);border-radius:5px;overflow:hidden;background:#fff}
+#f03 .s-nav{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;
+  border-bottom:1px solid #EFEEEA}
+#f03 .s-nav .logo{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700}
+#f03 .s-nav .dot{width:16px;height:16px;border-radius:5px;background:linear-gradient(135deg,#7C5CE0,#5B7BE8)}
+#f03 .s-nav .lk{display:flex;gap:13px;font-size:10.5px;color:#8B8B85}
+#f03 .s-nav .cta{font-size:10px;background:linear-gradient(135deg,#7C5CE0,#5B7BE8);color:#fff;
+  padding:5px 11px;border-radius:14px;font-weight:600}
+#f03 .s-hero{position:relative;background:#0E0E1A;padding:44px 30px 40px;text-align:center;overflow:hidden}
+#f03 .s-hero .glow{position:absolute;width:340px;height:200px;left:50%;top:-40px;transform:translateX(-50%);
+  background:radial-gradient(ellipse,rgba(124,92,224,.85) 0%,rgba(91,123,232,.35) 45%,transparent 72%);
+  filter:blur(24px)}
+#f03 .s-hero .inner{position:relative}
+#f03 .s-hero h1{font-size:25px;font-weight:800;letter-spacing:-.03em;line-height:1.15;
+  background:linear-gradient(100deg,#fff 25%,#C9B6FF 75%);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent}
+#f03 .s-hero p{font-size:11.5px;color:#A7A7BE;margin-top:10px;line-height:1.55}
+#f03 .s-hero .btns{display:flex;gap:8px;justify-content:center;margin-top:16px}
+#f03 .s-hero .b1{font-size:10.5px;font-weight:600;background:linear-gradient(135deg,#7C5CE0,#5B7BE8);
+  color:#fff;padding:8px 17px;border-radius:16px;box-shadow:0 6px 18px rgba(124,92,224,.5)}
+#f03 .s-hero .b2{font-size:10.5px;font-weight:600;background:rgba(255,255,255,.09);color:#fff;
+  padding:8px 17px;border-radius:16px;border:1px solid rgba(255,255,255,.18)}
+#f03 .s-logos{display:flex;justify-content:center;gap:20px;padding:14px 0;background:#0E0E1A;
+  border-top:1px solid rgba(255,255,255,.06)}
+#f03 .s-logos .lg{width:44px;height:9px;background:rgba(255,255,255,.22);border-radius:2px}
+#f03 .s-feat{padding:24px 20px;text-align:center}
+#f03 .s-feat .h{font-size:15px;font-weight:700;letter-spacing:-.02em}
+#f03 .s-feat .sh{font-size:10.5px;color:#8B8B85;margin-top:6px}
+#f03 .s-feat .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:18px}
+#f03 .s-feat .c{background:#fff;border:1px solid #EDECE8;border-radius:12px;padding:14px 11px;
+  box-shadow:0 4px 14px rgba(0,0,0,.07);display:flex;flex-direction:column;align-items:center;gap:7px}
+#f03 .s-feat .c .ic{width:26px;height:26px;border-radius:8px;
+  background:linear-gradient(135deg,#EDE7FE,#DFE7FD);display:flex;align-items:center;justify-content:center}
+#f03 .s-feat .c .ic i{width:11px;height:11px;border:1.6px solid #7C5CE0;border-radius:2px;display:block}
+#f03 .s-feat .c .t{font-size:11px;font-weight:700}
+#f03 .s-feat .c .d{font-size:9px;color:#9A9A93;line-height:1.5}
+#f03 .s-cta{background:linear-gradient(120deg,#7C5CE0,#5B7BE8 60%,#C46BD8);padding:26px 20px;text-align:center}
+#f03 .s-cta .h{font-size:15px;font-weight:800;color:#fff;letter-spacing:-.02em}
+#f03 .s-cta .b{display:inline-block;font-size:10px;font-weight:700;background:#fff;color:#5B3BC4;
+  padding:8px 18px;border-radius:16px;margin-top:12px}
+#f03 .d-nav{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;
+  border-bottom:1px solid #EDEBE4;background:#FAF9F5}
+#f03 .d-nav .logo{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;letter-spacing:-.01em}
+#f03 .d-nav .mk{width:15px;height:15px;background:var(--ink);border-radius:2px;position:relative}
+#f03 .d-nav .mk:after{content:"";position:absolute;inset:4px 4px auto auto;width:5px;height:5px;background:#FAF9F5}
+#f03 .d-nav .lk{display:flex;gap:15px;font-size:10.5px;color:#4A4A46}
+#f03 .d-nav .cta{font-size:10px;background:var(--ink);color:#fff;padding:6px 13px;border-radius:4px;font-weight:500}
+#f03 .d-hero{position:relative;background:#FAF9F5;padding:40px 30px 0;text-align:center;overflow:hidden}
+#f03 .d-hero h1{font-family:'Georgia','Times New Roman',serif;font-size:40px;font-weight:400;
+  line-height:.98;letter-spacing:-.02em;color:#121212;position:relative;z-index:2}
+#f03 .d-hero .sub{font-size:11px;color:#6E6E68;margin:14px auto 0;line-height:1.7;max-width:280px;position:relative;z-index:2}
+#f03 .d-hero .btn{display:inline-block;font-size:10.5px;background:var(--ink);color:#fff;
+  padding:9px 20px;border-radius:5px;margin-top:16px;position:relative;z-index:2;font-weight:500}
+#f03 .d-art{position:absolute;left:-40px;bottom:0;width:230px;height:190px;z-index:1;opacity:.95}
+#f03 .d-art .tower{position:absolute;left:34px;bottom:22px;width:96px;height:150px;
+  background:repeating-linear-gradient(0deg,#9FB4D8 0 1px,#EAF0F9 1px 5px);
+  border:1px solid #8FA7CE;border-radius:44px 44px 3px 3px}
+#f03 .d-art .tower2{position:absolute;left:118px;bottom:22px;width:66px;height:96px;
+  background:repeating-linear-gradient(0deg,#B3C4E0 0 1px,#F0F4FA 1px 5px);
+  border:1px solid #9FB4D8;border-radius:26px 26px 3px 3px}
+#f03 .d-art .base{position:absolute;left:0;bottom:0;width:230px;height:26px;
+  background:repeating-linear-gradient(90deg,#A8BBDB 0 1px,#EDF2F9 1px 6px);border-top:1px solid #93A9CF}
+#f03 .d-art .tree{position:absolute;bottom:22px;width:15px;height:19px;border-radius:50% 50% 42% 42%;
+  background:#8CA98A}
+#f03 .d-art .tree.a{left:12px}
+#f03 .d-art .tree.b{left:150px;bottom:118px;width:11px;height:14px}
+#f03 .d-art .tree.c{left:196px;height:24px;width:17px}
+#f03 .d-art .tree.d{left:60px;bottom:172px;width:10px;height:12px}
+#f03 .d-card{position:relative;z-index:3;margin:-26px 22px 0;background:#fff;
+  border:1px solid #EAE8E1;box-shadow:0 14px 40px rgba(20,20,20,.09);border-radius:4px;padding:20px 22px 18px}
+#f03 .d-card .eyebrow2{font-family:'JetBrains Mono',Consolas,monospace;font-size:8.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:#9A9A93;margin-bottom:11px}
+#f03 .d-card .split{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+#f03 .d-card .split h2{font-family:'Georgia',serif;font-size:17px;font-weight:400;line-height:1.15;letter-spacing:-.01em}
+#f03 .d-card .split p{font-size:10px;color:#5A5A55;line-height:1.65}
+#f03 .d-card .hair{height:1px;background:#EBE9E2;margin:16px 0 12px}
+#f03 .d-card .nums{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+#f03 .d-card .n{background:#F5F4F0;padding:8px 10px;display:flex;align-items:center;
+  justify-content:space-between;gap:6px}
+#f03 .d-card .n .l{font-size:9.5px;display:flex;gap:7px;align-items:baseline}
+#f03 .d-card .n .l i{font-family:'JetBrains Mono',Consolas,monospace;font-size:8.5px;color:#A5A59D;font-style:normal}
+#f03 .d-card .n .ar{font-size:10px;color:#8B8B85}
+#f03 .d-strip{padding:26px 22px 30px;background:#FAF9F5;display:grid;grid-template-columns:1.1fr 1fr;
+  gap:22px;align-items:center;margin-top:20px;border-top:1px solid #EDEBE4}
+#f03 .d-strip h3{font-family:'Georgia',serif;font-size:19px;font-weight:400;line-height:1.15;letter-spacing:-.01em}
+#f03 .d-strip p{font-size:10px;color:#5A5A55;line-height:1.65;margin-top:8px}
+#f03 .d-strip .shot{background:#EFEDE6;border:1px solid #E2E0D8;height:88px;display:flex;
+  flex-direction:column;padding:8px;gap:5px}
+#f03 .d-strip .shot .bar{height:5px;background:#D5D2C9}
+#f03 .d-strip .shot .bar.w{width:55%}
+#f03 .d-strip .shot .plot{flex:1;background:
+  linear-gradient(180deg,transparent 62%,#C3D2E8 62%);border-bottom:1.5px solid var(--blue)}
+#f03 .tells{margin-top:18px}
+#f03 .tells .row{display:flex;gap:9px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--line);
+  font-size:13px;line-height:1.45}
+#f03 .tells .row:last-child{border-bottom:0}
+#f03 .tells .x{color:var(--red);font-weight:700;font-family:'JetBrains Mono',Consolas,monospace;
+  font-size:12px;flex:0 0 auto;margin-top:1px}
+#f03 .tells .k{color:var(--green);font-weight:700;font-family:'JetBrains Mono',Consolas,monospace;
+  font-size:12px;flex:0 0 auto;margin-top:1px}
+#f03 .tells .row b{font-weight:600}
+#f03 .tells .row span{color:#5A5A55}
+/* ===== figure 04 — fig-04-markup-legend.html ===== */
+#f04{width:1540px}
+#f04 .fig{padding:58px 62px 54px}
+#f04 .wrap{display:grid;grid-template-columns:392px 1fr;gap:44px;margin-top:4px;align-items:start}
+#f04 .legend{border:1px solid var(--line);border-radius:6px;background:#fff;overflow:hidden}
+#f04 .legend .hd{padding:13px 18px;border-bottom:1px solid var(--line);
+  font-family:'JetBrains Mono',Consolas,monospace;font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:600}
+#f04 .lrow{display:flex;gap:14px;padding:14px 18px;border-bottom:1px solid #F0EFEB;align-items:flex-start}
+#f04 .lrow:last-child{border-bottom:0}
+#f04 .swatch{flex:0 0 62px;height:38px;border-radius:3px;position:relative;display:flex;
+  align-items:center;justify-content:center;overflow:hidden}
+#f04 .sw-green{border:2.5px solid var(--green);background:rgba(63,160,106,.07)}
+#f04 .sw-blue{border:2.5px dashed var(--blue);background:rgba(74,143,231,.07)}
+#f04 .sw-red{border:2px solid var(--red);background:rgba(216,69,62,.06)}
+#f04 .sw-red:before, #f04 .sw-red:after{content:"";position:absolute;left:-30%;width:160%;height:2.5px;
+  background:var(--red);top:50%}
+#f04 .sw-red:before{transform:rotate(31deg)}
+#f04 .sw-red:after{transform:rotate(-31deg)}
+#f04 .sw-arrow{border:1px solid var(--line);background:#F6F5F1}
+#f04 .sw-arrow .a{width:40px;height:2.5px;background:var(--terra);position:relative}
+#f04 .sw-arrow .a:after{content:"";position:absolute;right:-1px;top:-4px;border-left:9px solid var(--terra);
+  border-top:5px solid transparent;border-bottom:5px solid transparent}
+#f04 .sw-num{border:1px solid var(--line);background:#F6F5F1;gap:5px}
+#f04 .sw-num i{width:17px;height:17px;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;
+  font-family:'JetBrains Mono',Consolas,monospace;font-size:9.5px;display:flex;align-items:center;
+  justify-content:center;font-weight:600}
+#f04 .ltext .t{font-size:14px;font-weight:600;letter-spacing:-.01em}
+#f04 .ltext .d{font-size:12.5px;color:#66665F;line-height:1.5;margin-top:3px}
+#f04 .warn{margin-top:20px;border:1.5px solid var(--terra);background:#FDF4F0;border-radius:6px;padding:15px 17px}
+#f04 .warn .t{font-family:'JetBrains Mono',Consolas,monospace;font-size:10.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--terra);font-weight:600;margin-bottom:7px}
+#f04 .warn p{font-size:13px;line-height:1.55;color:#3A3A38}
+#f04 .warn p+p{margin-top:8px}
+#f04 .canvas{padding-left:46px}
+#f04 .site{border:1px solid var(--line);border-radius:4px;background:#F7F6F1}
+#f04 .mw{position:relative}
+#f04 .ov{position:absolute;inset:-2px;z-index:6;pointer-events:none;border-radius:2px;overflow:hidden}
+#f04 .ov.green{border:3px solid var(--green);box-shadow:inset 0 0 0 2px rgba(63,160,106,.10)}
+#f04 .ov.blue{border:3px dashed var(--blue);box-shadow:inset 0 0 0 2px rgba(74,143,231,.09)}
+#f04 .ov.red{border:2.5px solid var(--red);background:rgba(216,69,62,.05)}
+#f04 .ov.red:before, #f04 .ov.red:after{content:"";position:absolute;left:-10%;width:120%;height:3px;
+  background:var(--red);top:50%;opacity:.9}
+#f04 .ov.red:before{transform:rotate(11deg)}
+#f04 .ov.red:after{transform:rotate(-11deg)}
+#f04 .tag2{position:absolute;z-index:8;font-family:'JetBrains Mono',Consolas,monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;color:#fff;padding:3.5px 8px;border-radius:2px;
+  white-space:nowrap;font-weight:600;top:-11px;left:10px}
+#f04 .tag2.green{background:var(--green)}
+#f04 .tag2.blue{background:var(--blue)}
+#f04 .tag2.red{background:var(--red)}
+#f04 .badge-n{position:absolute;z-index:8;left:-46px;top:50%;transform:translateY(-50%);
+  width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;
+  font-family:'JetBrains Mono',Consolas,monospace;font-size:12.5px;font-weight:600;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 2px 7px rgba(0,0,0,.26)}
+#f04 .ann{position:absolute;z-index:9;display:flex;align-items:center;pointer-events:none}
+#f04 .ann .lbl{background:var(--terra);color:#fff;font-size:11.5px;padding:6px 10px;border-radius:3px;
+  line-height:1.35;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,.18);text-align:left}
+#f04 .ann .line{height:2.5px;background:var(--terra);position:relative;flex:0 0 auto}
+#f04 .ann .line:after{content:"";position:absolute;left:-1px;top:-4.5px;border-right:10px solid var(--terra);
+  border-top:5.5px solid transparent;border-bottom:5.5px solid transparent}
+#f04 .n2{display:flex;justify-content:space-between;align-items:center;padding:13px 22px;
+  border-bottom:1px solid #E8E6DE}
+#f04 .n2 .lg{font-family:'Georgia',serif;font-size:15px;letter-spacing:.06em}
+#f04 .n2 .lk{display:flex;gap:16px;font-size:10.5px;color:#6B6B64}
+#f04 .n2 .bt{font-size:9.5px;border:1px solid #2C3A2C;color:#2C3A2C;padding:5px 12px;border-radius:2px}
+#f04 .h2z{padding:32px 26px 28px;display:grid;grid-template-columns:1.1fr 1fr;gap:26px;align-items:end}
+#f04 .h2z h1{font-family:'Georgia',serif;font-size:36px;line-height:1.04;letter-spacing:.01em;
+  text-transform:uppercase;font-weight:400;color:#23281F}
+#f04 .h2z .rt{font-size:10.5px;color:#6B6B64;line-height:1.75;padding-bottom:4px;padding-right:150px}
+#f04 .h2z .rt .lnk{display:inline-block;margin-top:9px;font-family:'JetBrains Mono',Consolas,monospace;
+  font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid #A9A99F;padding-bottom:2px}
+#f04 .band2{display:grid;grid-template-columns:1.3fr 1fr;gap:14px;padding:0 26px 24px}
+#f04 .band2 .ph{height:124px;background:linear-gradient(165deg,#8FA582 0%,#6E8566 45%,#4E6349 100%);position:relative}
+#f04 .band2 .ph:after{content:"";position:absolute;left:0;right:0;bottom:0;height:44px;
+  background:linear-gradient(180deg,transparent,rgba(28,38,26,.4))}
+#f04 .band2 .txt{background:#EFEDE4;padding:16px;display:flex;flex-direction:column;justify-content:center;
+  padding-right:140px}
+#f04 .band2 .txt .k{font-family:'Georgia',serif;font-size:14px;line-height:1.28;margin-bottom:8px}
+#f04 .band2 .txt .p{font-size:9px;color:#6B6B64;line-height:1.65}
+#f04 .why{padding:22px 26px 24px;background:#EFEDE4;border-top:1px solid #E2DFD4}
+#f04 .why .hd{font-family:'Georgia',serif;font-size:15px;margin-bottom:15px}
+#f04 .why .g{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+#f04 .why .c{display:flex;flex-direction:column;gap:6px}
+#f04 .why .c .ic{width:18px;height:18px;border:1.4px solid #7C8A73;border-radius:50%}
+#f04 .why .c .t{font-size:10.5px;font-weight:600}
+#f04 .why .c .d{font-size:9px;color:#7A7A72;line-height:1.6}
+#f04 .offer{padding:22px 26px 26px;display:grid;grid-template-columns:.85fr 1.15fr;gap:16px}
+#f04 .offer .list{display:flex;flex-direction:column;gap:6px}
+#f04 .offer .list .i{background:#E4E2D8;padding:8px 12px;font-size:9.5px;color:#3D4238}
+#f04 .offer .list .i.on{background:#2C3A2C;color:#F0EFE8}
+#f04 .offer .ph2{height:126px;background:linear-gradient(150deg,#A8B79C,#6E8566)}
+/* ===== figure 05 — fig-05-extract-translate.html ===== */
+#f05{width:1560px}
+#f05 .fig{padding:58px 60px 52px}
+#f05 .flow{display:grid;grid-template-columns:1fr 62px 1fr 62px 1fr;align-items:stretch;margin-top:6px}
+#f05 .doc{border:1px solid var(--line);border-radius:6px;background:#fff;overflow:hidden;
+  display:flex;flex-direction:column}
+#f05 .doc .hd{padding:12px 16px;border-bottom:1px solid var(--line);background:#FCFBF8}
+#f05 .doc .hd .st{font-family:'JetBrains Mono',Consolas,monospace;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--grey);margin-bottom:5px}
+#f05 .doc .hd .nm{font-size:16px;font-weight:600;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
+#f05 .doc .hd .nm .f{font-family:'JetBrains Mono',Consolas,monospace;font-size:11.5px;color:#1F4E86;
+  background:var(--blue-soft);padding:3px 7px;border-radius:3px;font-weight:500}
+#f05 .doc .bd{padding:14px 16px;flex:1;font-family:'JetBrains Mono',Consolas,monospace;
+  font-size:11.5px;line-height:1.75;color:#3A3A38}
+#f05 .doc .bd .sec{color:#A5A59D;letter-spacing:.1em;font-size:9.5px;margin-top:11px;margin-bottom:3px}
+#f05 .doc .bd .sec:first-child{margin-top:0}
+#f05 .doc .bd .l{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#f05 .strike{color:#C2554F;text-decoration:line-through;text-decoration-thickness:1.5px}
+#f05 .fixed{color:#2E7D51;font-weight:600}
+#f05 .doc .bd .hi{background:#FFF3D9;border-radius:2px;padding:0 3px}
+#f05 .doc.corrected{border-color:var(--green);border-width:1.5px}
+#f05 .doc.corrected .hd{background:#F1F9F4;border-bottom-color:#CFE7DA}
+#f05 .doc.final{border-color:var(--terra);border-width:1.5px}
+#f05 .doc.final .hd{background:#FDF4F0;border-bottom-color:#F3D9CE}
+#f05 .doc.final .hd .nm .f{color:#A8492A;background:#F8E4DB}
+#f05 .conn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;padding:0 6px}
+#f05 .conn .cap{font-family:'JetBrains Mono',Consolas,monospace;font-size:9.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--grey);text-align:center;line-height:1.5}
+#f05 .conn .ar{width:100%;height:2.5px;background:var(--ink);position:relative}
+#f05 .conn .ar:after{content:"";position:absolute;right:-1px;top:-4.5px;border-left:10px solid var(--ink);
+  border-top:5.5px solid transparent;border-bottom:5.5px solid transparent}
+#f05 .rules{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+#f05 .rule-card{border:1px solid var(--line);border-radius:6px;background:#fff;padding:18px 20px}
+#f05 .rule-card.keep{border-left:4px solid var(--green)}
+#f05 .rule-card.drop{border-left:4px solid var(--red)}
+#f05 .rule-card .t{font-size:16px;font-weight:600;letter-spacing:-.01em;margin-bottom:4px;
+  display:flex;align-items:center;gap:9px}
+#f05 .rule-card .t i{font-family:'JetBrains Mono',Consolas,monospace;font-size:11px;font-style:normal;
+  padding:3px 8px;border-radius:3px;color:#fff;letter-spacing:.1em;text-transform:uppercase}
+#f05 .rule-card.keep .t i{background:var(--green)}
+#f05 .rule-card.drop .t i{background:var(--red)}
+#f05 .rule-card .d{font-size:13px;color:#66665F;line-height:1.5;margin-bottom:11px}
+#f05 .chips{display:flex;flex-wrap:wrap;gap:6px}
+#f05 .chip{font-family:'JetBrains Mono',Consolas,monospace;font-size:11px;border:1px solid var(--line);
+  background:#FBFAF7;border-radius:3px;padding:4px 9px;color:#4A4A46}
+#f05 .why{margin-top:26px;border-top:1px solid var(--line);padding-top:22px;
+  display:grid;grid-template-columns:150px 1fr;gap:26px;align-items:start}
+#f05 .why .k{font-family:'JetBrains Mono',Consolas,monospace;font-size:11px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--terra);font-weight:600;line-height:1.6}
+#f05 .why p{font-size:15.5px;line-height:1.65;color:#2A2A28}
+#f05 .why p b{font-weight:600}
+/* ===== figure 06 — fig-06-spec-altitude.html ===== */
+#f06{width:1560px}
+#f06 .fig{padding:58px 60px 54px}
+#f06 .wrap{display:grid;grid-template-columns:1fr 452px;gap:44px;margin-top:6px;align-items:start}
+#f06 .bottom{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:24px}
+#f06 .ladder{position:relative;padding-left:96px}
+#f06 .axis{position:absolute;left:34px;top:6px;bottom:6px;width:3px;
+  background:linear-gradient(180deg,#E0DED7 0%,#4A8FE7 44%,#D97757 58%,#4A8FE7 72%,#E0DED7 100%)}
+#f06 .axis-cap{position:absolute;left:0;width:78px;font-family:'JetBrains Mono',Consolas,monospace;
+  font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);line-height:1.5}
+#f06 .axis-cap.top{top:-2px}
+#f06 .axis-cap.bot{bottom:-2px}
+#f06 .rung{display:grid;grid-template-columns:1fr 258px;gap:20px;align-items:stretch;
+  margin-bottom:11px;position:relative}
+#f06 .rung:last-child{margin-bottom:0}
+#f06 .sample{border:1px solid var(--line);border-radius:5px;background:#fff;padding:13px 16px;
+  display:flex;flex-direction:column;justify-content:center;min-height:60px}
+#f06 .sample .txt{font-family:'JetBrains Mono',Consolas,monospace;font-size:13px;line-height:1.62;
+  color:#3A3A38}
+#f06 .sample .txt .dim{color:#A5A59D}
+#f06 .verdict{display:flex;flex-direction:column;justify-content:center;gap:3px;padding:2px 0}
+#f06 .verdict .lab{font-family:'JetBrains Mono',Consolas,monospace;font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;font-weight:600}
+#f06 .verdict .why{font-size:11.5px;line-height:1.45;color:#66665F}
+#f06 .verdict .why b{color:var(--ink);font-weight:600}
+#f06 .node{position:absolute;left:-70px;top:50%;transform:translateY(-50%);
+  width:15px;height:15px;border-radius:50%;background:#fff;border:3px solid #CFCDC5;z-index:2}
+#f06 .rung.miss .lab{color:var(--grey)}
+#f06 .rung.miss .node{border-color:#CFCDC5}
+#f06 .rung.near .sample{border-color:#B9D3F5}
+#f06 .rung.near .lab{color:var(--blue)}
+#f06 .rung.near .node{border-color:var(--blue)}
+#f06 .rung.hit{margin:16px 0}
+#f06 .rung.hit .sample{border:2px solid var(--terra);background:#FEFAF8;
+  box-shadow:0 6px 22px rgba(217,119,87,.16);padding:16px 18px}
+#f06 .rung.hit .sample .txt{font-size:13.5px;color:#1E1E1C;line-height:1.75}
+#f06 .rung.hit .lab{color:var(--terra)}
+#f06 .rung.hit .node{border-color:var(--terra);background:var(--terra);width:19px;height:19px;left:-72px}
+#f06 .rung.hit .verdict .why{color:#3A3A38}
+#f06 .rung.over .sample{border-color:#E8CFC8;background:#FCF7F5}
+#f06 .rung.over .sample .txt{color:#8B8B85;font-size:12px}
+#f06 .rung.over .lab{color:#B5362F}
+#f06 .rung.over .node{border-color:#D8B0A6}
+#f06 .band-tag{position:absolute;left:-124px;top:50%;transform:translateY(-50%) rotate(-90deg);
+  transform-origin:center;font-family:'JetBrains Mono',Consolas,monospace;font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--terra);font-weight:600;white-space:nowrap}
+#f06 .card{border:1px solid var(--line);border-radius:6px;background:#fff;overflow:hidden;margin-bottom:18px}
+#f06 .card:last-child{margin-bottom:0}
+#f06 .card .hd{padding:12px 16px;border-bottom:1px solid var(--line);background:#FCFBF8;
+  display:flex;align-items:baseline;gap:9px}
+#f06 .card .hd .n{font-family:'JetBrains Mono',Consolas,monospace;font-size:10px;color:#fff;
+  background:var(--ink);border-radius:2px;padding:3px 6px;letter-spacing:.08em}
+#f06 .card .hd .t{font-size:14.5px;font-weight:600;letter-spacing:-.01em}
+#f06 .card .bd{padding:14px 16px}
+#f06 .card .bd p{font-size:12.5px;line-height:1.6;color:#4A4A46}
+#f06 .card .bd p+p{margin-top:8px}
+#f06 .card .bd b{color:var(--ink);font-weight:600}
+#f06 .t2{display:grid;grid-template-columns:74px 34px 1fr;gap:0;align-items:center;margin:12px 0 10px}
+#f06 .t2 .spec{border:1.5px solid var(--terra);border-radius:4px;background:#FEFAF8;height:76px;
+  display:flex;flex-direction:column;padding:8px 7px;gap:3.5px;justify-content:center}
+#f06 .t2 .spec i{height:2.5px;background:#E5B49E;border-radius:1px;display:block}
+#f06 .t2 .spec i:nth-child(2){width:78%}
+#f06 .t2 .spec i:nth-child(4){width:62%}
+#f06 .t2 .spec i:nth-child(5){width:88%}
+#f06 .t2 .fork{position:relative;height:76px}
+#f06 .t2 .fork:before, #f06 .t2 .fork:after{content:"";position:absolute;left:2px;width:26px;height:2px;
+  background:var(--ink)}
+#f06 .t2 .fork:before{top:24%}
+#f06 .t2 .fork:after{top:76%}
+#f06 .t2 .fork span{position:absolute;left:2px;top:24%;bottom:24%;width:2px;background:var(--ink)}
+#f06 .t2 .outs{display:flex;flex-direction:column;gap:7px}
+#f06 .t2 .mini{height:34px;border:1px solid var(--line);border-radius:3px;background:#F8F7F3;
+  display:flex;align-items:center;gap:5px;padding:0 7px}
+#f06 .t2 .mini .h{width:34%;height:5px;background:#C9C7C0;border-radius:1px}
+#f06 .t2 .mini .c{flex:1;display:flex;gap:3px}
+#f06 .t2 .mini .c i{flex:1;height:13px;background:#DEDCD5;border-radius:2px;display:block}
+#f06 .t2 .mini .ok{font-family:'JetBrains Mono',Consolas,monospace;font-size:11px;color:var(--green);
+  font-weight:700}
+#f06 .verd-line{display:flex;align-items:center;gap:8px;font-size:12.5px;color:#3A3A38;
+  border-top:1px solid #F0EFEB;padding-top:10px;margin-top:2px;line-height:1.45}
+#f06 .verd-line b{color:var(--green)}
+#f06 .len{display:flex;align-items:stretch;gap:0;border:1px solid var(--line);border-radius:5px;
+  overflow:hidden;margin-top:4px}
+#f06 .len .side{background:var(--ink);color:#fff;padding:11px 13px;display:flex;flex-direction:column;
+  justify-content:center;min-width:96px}
+#f06 .len .side .big{font-size:24px;font-weight:600;letter-spacing:-.02em;line-height:1}
+#f06 .len .side .sm{font-family:'JetBrains Mono',Consolas,monospace;font-size:9px;letter-spacing:.11em;
+  text-transform:uppercase;color:#9A9A93;margin-top:4px}
+#f06 .len .txt{padding:11px 14px;font-size:12.5px;line-height:1.55;color:#4A4A46;
+  display:flex;align-items:center}
+#f06 .abs{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+#f06 .abs span{font-family:'JetBrains Mono',Consolas,monospace;font-size:11.5px;
+  border:1px solid #E2DDD6;background:#FBFAF7;border-radius:3px;padding:5px 9px;color:#3A3A38}
+#f06 .abs span.x{color:#B5362F;border-color:#EBD3CF;background:#FDF6F5}
+/* ===== figure 07 — fig-07-slop-tells.html ===== */
+#f07{width:1500px}
+#f07 .fig{padding:58px 62px 54px}
+#f07 .grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:6px}
+#f07 .cell{border:1px solid var(--line);border-radius:5px;background:#fff;overflow:hidden;display:flex;flex-direction:column}
+#f07 .demo{height:96px;position:relative;overflow:hidden;background:#F7F6F2;
+  display:flex;align-items:center;justify-content:center}
+#f07 .cell .cap{padding:10px 11px 11px;border-top:1px solid #F0EFEB}
+#f07 .cell .cap .t{font-size:12.5px;font-weight:600;line-height:1.3;letter-spacing:-.005em;
+  display:flex;gap:6px;align-items:flex-start}
+#f07 .cell .cap .t i{color:var(--red);font-family:'JetBrains Mono',Consolas,monospace;font-size:12px;
+  font-style:normal;font-weight:700;flex:0 0 auto}
+#f07 .cell .cap .d{font-size:10.5px;color:#7A7A72;line-height:1.45;margin-top:4px;padding-left:15px}
+#f07 .d-grad{position:absolute;inset:0;background:linear-gradient(135deg,#7C5CE0,#5B7BE8 55%,#C46BD8)}
+#f07 .d-glow{position:absolute;inset:0;background:#0E0E1A}
+#f07 .d-glow:after{content:"";position:absolute;width:120px;height:78px;left:50%;top:6px;transform:translateX(-50%);
+  background:radial-gradient(ellipse,rgba(124,92,224,.95),rgba(91,123,232,.35) 48%,transparent 72%);filter:blur(15px)}
+#f07 .d-cards{display:flex;gap:7px;padding:0 10px;width:100%}
+#f07 .d-cards .c{flex:1;background:#fff;border:1px solid #EDECE8;border-radius:11px;padding:9px 5px;
+  box-shadow:0 4px 12px rgba(0,0,0,.09);display:flex;flex-direction:column;align-items:center;gap:5px}
+#f07 .d-cards .c .ic{width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#EDE7FE,#DFE7FD)}
+#f07 .d-cards .c .l{height:3px;width:72%;background:#D9D7D0;border-radius:1px}
+#f07 .d-cards .c .l2{height:2.5px;width:50%;background:#E6E4DD;border-radius:1px}
+#f07 .d-shadow{display:flex;flex-direction:column;gap:8px;width:74%}
+#f07 .d-shadow .s{height:19px;background:#fff;border:1px solid #EDECE8;border-radius:11px;
+  box-shadow:0 6px 16px rgba(0,0,0,.14)}
+#f07 .d-glass{position:absolute;inset:0;background:linear-gradient(135deg,#6B4BC8,#3E6FD6)}
+#f07 .d-glass .p{position:absolute;left:16%;top:20%;right:16%;bottom:20%;border-radius:11px;
+  background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.38);backdrop-filter:blur(4px)}
+#f07 .d-center{display:flex;flex-direction:column;align-items:center;gap:6px;width:100%}
+#f07 .d-center .l{height:5px;background:#C9C7C0;border-radius:1px}
+#f07 .d-center .l.a{width:56%}
+#f07 .d-center .l.b{width:38%;height:3px;background:#DCDAD3}
+#f07 .d-center .l.c{width:30%;height:3px;background:#DCDAD3}
+#f07 .d-center .b{width:26%;height:11px;background:#8E8C85;border-radius:6px;margin-top:3px}
+#f07 .d-center .axis{position:absolute;left:50%;top:0;bottom:0;width:1px;
+  background:repeating-linear-gradient(180deg,var(--red) 0 4px,transparent 4px 9px);opacity:.6}
+#f07 .d-rhythm{display:flex;flex-direction:column;gap:5px;width:82%}
+#f07 .d-rhythm .r{display:flex;flex-direction:column;gap:3px;align-items:center;
+  padding:5px 0;border-bottom:1px dashed #DEDCD5}
+#f07 .d-rhythm .r:last-child{border-bottom:0}
+#f07 .d-rhythm .r .h{height:3.5px;width:40%;background:#C9C7C0}
+#f07 .d-rhythm .r .cc{display:flex;gap:3px;width:100%;padding:0 8px}
+#f07 .d-rhythm .r .cc i{flex:1;height:9px;background:#E4E2DB;border-radius:3px}
+#f07 .d-emoji{display:flex;gap:12px;font-size:24px;align-items:center}
+#f07 .d-logos{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;width:78%}
+#f07 .d-logos .l{width:42px;height:12px;background:#D6D4CD;border-radius:2px}
+#f07 .d-logos .cap2{font-family:'JetBrains Mono',Consolas,monospace;font-size:7.5px;letter-spacing:.15em;
+  color:#A5A59D;width:100%;text-align:center;text-transform:uppercase;margin-bottom:2px}
+#f07 .d-radius{display:flex;gap:8px;align-items:center}
+#f07 .d-radius .b{width:30px;height:30px;background:#D6D4CD;border-radius:12px}
+#f07 .d-radius .b.sm{width:20px;height:20px}
+#f07 .d-radius .b.lg{width:40px;height:22px}
+#f07 .d-ctas{display:flex;gap:8px}
+#f07 .d-ctas .b{padding:8px 15px;border-radius:16px;font-size:9px;font-weight:700;color:#fff;
+  background:linear-gradient(135deg,#7C5CE0,#5B7BE8)}
+#f07 .d-ctas .b.o{background:#fff;color:#5B3BC4;border:1.5px solid #C6B9F0}
+#f07 .d-blob{position:absolute;inset:0;background:#F0EEF9;display:flex;align-items:center;justify-content:center}
+#f07 .d-blob .o{width:52px;height:52px;border-radius:48% 52% 42% 58%;
+  background:linear-gradient(135deg,#A98CF0,#6FA0EC 60%,#D48DE0);
+  box-shadow:0 8px 20px rgba(124,92,224,.35)}
+#f07 .d-copy{padding:0 12px;text-align:center}
+#f07 .d-copy .h{font-size:11.5px;font-weight:800;letter-spacing:-.02em;line-height:1.25;color:#3A3A38}
+#f07 .d-copy .s{font-size:8.5px;color:#9A9A93;margin-top:5px;line-height:1.4}
+#f07 .d-nothing{display:flex;flex-direction:column;gap:5px;width:76%;align-items:center}
+#f07 .d-nothing .l{height:4px;background:#DCDAD3;border-radius:1px}
+#f07 .d-nothing .l.a{width:70%}
+#f07 .d-nothing .l.b{width:88%}
+#f07 .d-nothing .l.c{width:52%}
+#f07 .d-nothing .tag{font-family:'JetBrains Mono',Consolas,monospace;font-size:8px;color:#A5A59D;
+  letter-spacing:.1em;margin-top:5px}
+#f07 .gate{margin-top:34px;border:1.5px solid var(--ink);border-radius:6px;background:#fff;
+  display:grid;grid-template-columns:auto 1fr;gap:0;overflow:hidden}
+#f07 .gate .lft{background:var(--ink);color:#fff;padding:22px 24px;display:flex;flex-direction:column;
+  justify-content:center;min-width:230px}
+#f07 .gate .lft .k{font-family:'JetBrains Mono',Consolas,monospace;font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:#9A9A93;margin-bottom:8px}
+#f07 .gate .lft .n{font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.2}
+#f07 .gate .rgt{padding:22px 26px;display:flex;flex-direction:column;gap:10px;justify-content:center}
+#f07 .gate .rgt .q{font-size:19px;font-weight:600;letter-spacing:-.015em;line-height:1.35}
+#f07 .gate .rgt .a{font-size:14.5px;color:#4A4A46;line-height:1.6}
+#f07 .gate .rgt .a b{color:var(--ink);font-weight:600}
+#f07 .gate .rgt .ex{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+#f07 .gate .rgt .ex span{font-family:'JetBrains Mono',Consolas,monospace;font-size:11px;
+  border:1px solid var(--line);background:#FBFAF7;border-radius:3px;padding:4px 9px;color:#4A4A46}
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <div class="masthead">
+    <div class="kick">Standard Operating Procedure — figure set</div>
+    <h1>The Anti-Slop SOP</h1>
+    <div class="sub">How to direct AI to build a site that looks like your brand — not like every
+      other AI site. These are the seven figures from the document, in reading order.</div>
+    <div class="meta">
+      <div><b>7</b> figures</div>
+      <div><b>8</b> steps</div>
+      <div>rendered at <b>2×</b></div>
+    </div>
+    <div class="index">
+    <a class="ix" href="#f01"><span class="n">01</span><span class="tx"><b>AI is not designing. It is averaging.</b><i>The mechanism</i></span></a>
+    <a class="ix" href="#f02"><span class="n">02</span><span class="tx"><b>Eight steps. The first three never touch the AI.</b><i>The workflow</i></span></a>
+    <a class="ix" href="#f03"><span class="n">03</span><span class="tx"><b>The tells, and the decisions.</b><i>Same brief, two processes</i></span></a>
+    <a class="ix" href="#f04"><span class="n">04</span><span class="tx"><b>Draw on the screenshot. Use the same legend every time.</b><i>Step 3 — marking</i></span></a>
+    <a class="ix" href="#f05"><span class="n">05</span><span class="tx"><b>Never ask for a site. Ask for a spec.</b><i>Steps 4 & 5 — reverse engineering</i></span></a>
+    <a class="ix" href="#f06"><span class="n">06</span><span class="tx"><b>A spec is the list of decisions you took back.</b><i>What a spec looks like</i></span></a>
+    <a class="ix" href="#f07"><span class="n">07</span><span class="tx"><b>Twelve tells, and the gate that matters more.</b><i>Step 7 — the slop filter</i></span></a>
+    </div>
+  </div>
+
+<section class="sheet" id="f01">
+  <div class="sheet-tab">Fig. 01</div>
+<div class="fig">
+
+  <div class="eyebrow">Figure 1 — the mechanism</div>
+  <div class="fig-title">AI is not designing. It is averaging.</div>
+  <div class="fig-sub">A vague prompt returns the statistical middle of every website the model has ever seen. Slop isn't broken output — slop is <strong style="color:var(--ink)">average</strong> output.</div>
+  <div class="rule"></div>
+
+  <div class="stage">
+    <div>
+      <div class="col-label">Everything it has seen</div>
+      <div class="corpus">
+        <div class="tn r1"><div class="b hd"></div><div class="b tx"></div><div class="img"></div></div>
+        <div class="tn r2"><div class="b hd"></div><div class="b tx s"></div><div class="img"></div></div>
+        <div class="tn r3"><div class="b hd"></div><div class="b tx"></div><div class="img"></div></div>
+        <div class="tn r4"><div class="b hd"></div><div class="b tx s"></div><div class="img"></div></div>
+        <div class="tn r5"><div class="b hd"></div><div class="b tx"></div><div class="img"></div></div>
+        <div class="tn r6"><div class="b hd"></div><div class="b tx s"></div><div class="img"></div></div>
+        <div class="tn r7"><div class="b hd"></div><div class="b tx"></div><div class="img"></div></div>
+        <div class="tn r8"><div class="b hd"></div><div class="b tx s"></div><div class="img"></div></div>
+        <div class="tn r9"><div class="b hd"></div><div class="b tx"></div><div class="img"></div></div>
+        <div class="tn r10"><div class="b hd"></div><div class="b tx s"></div><div class="img"></div></div>
+        <div class="tn r11"><div class="b hd"></div><div class="b tx"></div><div class="img"></div></div>
+        <div class="tn r12"><div class="b hd"></div><div class="b tx s"></div><div class="img"></div></div>
+      </div>
+    </div>
+
+    <div class="funnel">
+      <div class="prompt-chip"><span class="q">"</span>modern, clean<br>landing page<span class="q">"</span></div>
+      <div class="arrow-wrap">
+        <div class="arrow-cap">no constraints</div>
+        <div class="arrow"></div>
+        <div class="arrow-cap">collapses to the mean</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="col-label">What you get — every time</div>
+      <div class="avg">
+        <div class="slop"><div class="hero"><div class="h"></div><div class="h2"></div><div class="btn"></div></div>
+          <div class="cards"><div class="card"><div class="ic"></div><div class="l"></div><div class="l2"></div></div><div class="card"><div class="ic"></div><div class="l"></div><div class="l2"></div></div><div class="card"><div class="ic"></div><div class="l"></div><div class="l2"></div></div></div></div>
+        <div class="slop"><div class="hero"><div class="h"></div><div class="h2"></div><div class="btn"></div></div>
+          <div class="cards"><div class="card"><div class="ic"></div><div class="l"></div><div class="l2"></div></div><div class="card"><div class="ic"></div><div class="l"></div><div class="l2"></div></div><div class="card"><div class="ic"></div><div class="l"></div><div class="l2"></div></div></div></div>
+        <div class="slop"><div class="hero"><div class="h"></div><div class="h2"></div><div class="btn"></div></div>
+          <div class="cards"><div class="card"><div class="ic"></div><div class="l"></div><div class="l2"></div></div><div class="card"><div class="ic"></div><div class="l"></div><div class="l2"></div></div><div class="card"><div class="ic"></div><div class="l"></div><div class="l2"></div></div></div></div>
+      </div>
+      <div class="verdict">
+        <div class="tag">three different brands</div>
+        <div class="txt">One page. This is the slop.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div>
+      <h3>Why "make it better" never works</h3>
+      <p>Asking for <em>better</em>, <em>premium</em>, or <em>more modern</em> just moves you to a different point in the same crowded middle. These words have no edges — the model resolves them to the average of themselves.</p>
+      <div style="margin-top:12px">
+        <span class="pill">modern</span><span class="pill">clean</span><span class="pill">premium</span><span class="pill">sleek</span><span class="pill">professional</span><span class="pill">minimal</span>
+      </div>
+    </div>
+    <div>
+      <h3>The move: <span class="accent">narrow the range</span></h3>
+      <p>Replace every adjective with something the model can obey — a hex code, a pixel value, a named reference, a hard prohibition. The average has nowhere to hide when only one answer fits.</p>
+      <div style="margin-top:12px">
+        <span class="pill on">#FAF9F6 background</span><span class="pill on">radius: 4px only</span><span class="pill on">no gradients</span><span class="pill on">serif H1 @ 72px</span><span class="pill on">one CTA, never two</span><span class="pill on">accent &lt; 5% of page</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+<section class="sheet" id="f02">
+  <div class="sheet-tab">Fig. 02</div>
+<div class="fig">
+
+  <div class="eyebrow">Figure 2 — the workflow</div>
+  <div class="fig-title">Eight steps. The first three never touch the AI.</div>
+  <div class="fig-sub">That's the whole difference. Everyone else opens the chat first. You arrive with the decisions already made.</div>
+  <div class="rule"></div>
+
+  <div class="zones">
+
+    <div class="zone hero-zone">
+      <div class="zone-hd"><div class="t">Outside the chat</div><div class="s">where the creative work actually happens</div></div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">01</div>
+          <div class="nm">Brand Core</div>
+          <div class="ds">Constraints, not adjectives. Every feeling gets a number or a hex code.</div>
+          <div class="out">brand.md — once per brand</div>
+        </div>
+        <div class="divider-v"></div>
+        <div class="step">
+          <div class="num">02</div>
+          <div class="nm">Hunt</div>
+          <div class="ds">7+ real references, 2 anti-references. Steal parts, not pages.</div>
+          <div class="out">screenshots + one line each</div>
+        </div>
+        <div class="divider-v"></div>
+        <div class="step">
+          <div class="num">03</div>
+          <div class="nm">Mark</div>
+          <div class="ds">Annotate with a fixed legend. Page level and component level.</div>
+          <div class="out">marked images</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="zone">
+      <div class="zone-hd"><div class="t">In the chat</div><div class="s">execution, not invention</div></div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">04</div>
+          <div class="nm">Extract</div>
+          <div class="ds">Make it write a spec from your images. No code yet. You correct it.</div>
+          <div class="out plain">reference spec</div>
+        </div>
+        <div class="divider-v"></div>
+        <div class="step">
+          <div class="num">05</div>
+          <div class="nm">Translate</div>
+          <div class="ds">Keep their spatial logic. Replace every style value with yours.</div>
+          <div class="out plain">your spec</div>
+        </div>
+        <div class="divider-v"></div>
+        <div class="step">
+          <div class="num">06</div>
+          <div class="nm">Build</div>
+          <div class="ds">One section at a time. Lock it, then move on.</div>
+          <div class="out plain">the site</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="zone">
+      <div class="zone-hd"><div class="t">Before you ship</div><div class="s">the gate</div></div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">07</div>
+          <div class="nm">Filter</div>
+          <div class="ds">Run the slop checklist. Three hits or more means you shipped the average.</div>
+          <div class="out plain">pass / fail</div>
+        </div>
+        <div class="divider-v"></div>
+        <div class="step">
+          <div class="num">08</div>
+          <div class="nm">Loop</div>
+          <div class="ds">Screenshot your own output. Mark it with the same legend. Feed it back.</div>
+          <div class="out plain">→ back to step 03</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <div class="mark">the law</div>
+    <p><strong>AI cannot be creative for you. It can only be accurate for you.</strong> Creativity happens in what you choose to look at and what you decide to steal — before you type anything. If you skip that, the model fills the gap with its default, and its default is the average.</p>
+  </div>
+
+  <div class="loopbar">
+    <div class="ic">08 → 03</div>
+    <div class="tx">The marking legend isn't only for other people's sites. <b>Screenshot your own draft and mark it the same way.</b> A red box around the exact dead gap beats any sentence describing it — three or four passes gets you somewhere no single prompt could.</div>
+  </div>
+
+</div>
+</section>
+<section class="sheet" id="f03">
+  <div class="sheet-tab">Fig. 03</div>
+<div class="fig">
+
+  <div class="eyebrow">Figure 3 — same brief, two processes</div>
+  <div class="fig-title">The tells, and the decisions.</div>
+  <div class="fig-sub">Both pages took one afternoon. The left one was prompted. The right one was specified — every value below came from a marked-up reference and a brand file.</div>
+  <div class="rule"></div>
+
+  <div class="cols">
+
+    <!-- ============ LEFT ============ -->
+    <div>
+      <div class="colhead"><div class="badge bad">prompted</div>
+        <div><div class="h">"Build a modern, clean landing page"</div>
+        <div class="p">One sentence in. Zero decisions made.</div></div></div>
+
+      <div class="screen">
+        <div class="s-nav">
+          <div class="logo"><div class="dot"></div>Nexora</div>
+          <div class="lk"><span>Features</span><span>Pricing</span><span>About</span><span>Blog</span></div>
+          <div class="cta">Get Started Free</div>
+        </div>
+        <div class="s-hero">
+          <div class="glow"></div>
+          <div class="inner">
+            <h1>Everything you need<br>to grow your business</h1>
+            <p>Supercharge your workflow with our powerful yet simple<br>platform built for modern teams.</p>
+            <div class="btns"><div class="b1">Start Free Trial</div><div class="b2">Book a Demo</div></div>
+          </div>
+        </div>
+        <div class="s-logos"><div class="lg"></div><div class="lg"></div><div class="lg"></div><div class="lg"></div><div class="lg"></div></div>
+        <div class="s-feat">
+          <div class="h">Powerful features</div>
+          <div class="sh">Everything you need, nothing you don't.</div>
+          <div class="grid">
+            <div class="c"><div class="ic"><i></i></div><div class="t">Speed</div><div class="d">Lightning fast performance at any scale.</div></div>
+            <div class="c"><div class="ic"><i></i></div><div class="t">Security</div><div class="d">Enterprise-grade protection built in.</div></div>
+            <div class="c"><div class="ic"><i></i></div><div class="t">Scale</div><div class="d">Grows seamlessly with your team.</div></div>
+          </div>
+        </div>
+        <div class="s-cta"><div class="h">Ready to get started?</div><div class="b">Start Free Trial</div></div>
+      </div>
+
+      <div class="tells">
+        <div class="row"><span class="x">✕</span><span><b>Purple→blue gradient</b> in the hero, the buttons, and the closing band</span></div>
+        <div class="row"><span class="x">✕</span><span><b>Blurred glow orb</b> behind the headline — pure decoration, means nothing</span></div>
+        <div class="row"><span class="x">✕</span><span><b>Three icon-in-a-rounded-square cards</b> named Speed / Security / Scale</span></div>
+        <div class="row"><span class="x">✕</span><span><b>Two equal CTAs</b> — the visitor now has a decision instead of an action</span></div>
+        <div class="row"><span class="x">✕</span><span><b>A logo strip of companies</b> that were never customers</span></div>
+        <div class="row"><span class="x">✕</span><span><b>Everything centered, everything rounded,</b> a shadow under every card</span></div>
+        <div class="row"><span class="x">✕</span><span><b>Not one real asset.</b> No photo, no screenshot, no number, no name</span></div>
+      </div>
+    </div>
+
+    <!-- ============ RIGHT ============ -->
+    <div>
+      <div class="colhead"><div class="badge good">specified</div>
+        <div><div class="h">Marked reference → corrected spec → brand swap</div>
+        <div class="p">Same tool. Same afternoon. Forty decisions made first.</div></div></div>
+
+      <div class="screen">
+        <div class="d-nav">
+          <div class="logo"><div class="mk"></div>Boomerang</div>
+          <div class="lk"><span>Product</span><span>Solutions</span><span>Pricing</span><span>Company</span></div>
+          <div class="cta">Book A Demo</div>
+        </div>
+        <div class="d-hero">
+          <div class="d-art">
+            <div class="base"></div><div class="tower"></div><div class="tower2"></div>
+            <div class="tree a"></div><div class="tree b"></div><div class="tree c"></div><div class="tree d"></div>
+          </div>
+          <h1>Build lasting<br>relationships.</h1>
+          <div class="sub">Conversational AI for regulated lenders — agents that handle the full borrower lifecycle across email, SMS, and voice.</div>
+          <div class="btn">Book A Demo</div>
+          <div style="height:44px"></div>
+        </div>
+        <div class="d-card">
+          <div class="eyebrow2">What do we do?</div>
+          <div class="split">
+            <h2>Conversations that build momentum</h2>
+            <p>Agents that hold a real conversation, plug into the systems you already run, and show their work on every step.</p>
+          </div>
+          <div class="hair"></div>
+          <div class="nums">
+            <div class="n"><div class="l"><i>01</i>Conversational</div><div class="ar">→</div></div>
+            <div class="n"><div class="l"><i>02</i>Connected</div><div class="ar">→</div></div>
+            <div class="n"><div class="l"><i>03</i>Compliant</div><div class="ar">→</div></div>
+          </div>
+        </div>
+        <div class="d-strip">
+          <div><h3>Every conversation, on the record.</h3>
+            <p>Full transcript, the systems it touched, and the reason it made each call — exportable for your compliance team.</p></div>
+          <div class="shot"><div class="bar w"></div><div class="bar" style="width:32%"></div><div class="plot"></div></div>
+        </div>
+      </div>
+
+      <div class="tells">
+        <div class="row"><span class="k">✓</span><span><b>No accent color anywhere in the UI.</b> Every bit of color comes from the artwork</span></div>
+        <div class="row"><span class="k">✓</span><span><b>One CTA.</b> Repeated, never competed with</span></div>
+        <div class="row"><span class="k">✓</span><span><b>Serif headline at 4× the body size</b> doing all the emotional work</span></div>
+        <div class="row"><span class="k">✓</span><span><b>Artwork bleeds off the left edge</b> — deliberately not contained in a box</span></div>
+        <div class="row"><span class="k">✓</span><span><b>One shadow on the entire page,</b> under the card that overlaps the hero</span></div>
+        <div class="row"><span class="k">✓</span><span><b>Asymmetry:</b> serif heading left, sans body right, hairline between</span></div>
+        <div class="row"><span class="k">✓</span><span><b>Radius 4–5px only.</b> Nothing pill-shaped, nothing fully square</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+<section class="sheet" id="f04">
+  <div class="sheet-tab">Fig. 04</div>
+<div class="fig">
+
+  <div class="eyebrow">Figure 4 — step 3, marking</div>
+  <div class="fig-title">Draw on the screenshot. Use the same legend every time.</div>
+  <div class="fig-sub">You don't need Figma — Snipping Tool, Preview markup, or Excalidraw all work. What matters is that the marks mean the same thing in every session, and that you tell the model what they mean.</div>
+  <div class="rule"></div>
+
+  <div class="wrap">
+
+    <div>
+      <div class="legend">
+        <div class="hd">The legend — fixed, never changes</div>
+        <div class="lrow"><div class="swatch sw-green"></div>
+          <div class="ltext"><div class="t">Green box — KEEP</div>
+          <div class="d">Reproduce this structure and its spacing exactly.</div></div></div>
+        <div class="lrow"><div class="swatch sw-blue"></div>
+          <div class="ltext"><div class="t">Blue dashed — STRUCTURE ONLY</div>
+          <div class="d">Keep the layout. Throw away every styling choice.</div></div></div>
+        <div class="lrow"><div class="swatch sw-red"></div>
+          <div class="ltext"><div class="t">Red X — REMOVE</div>
+          <div class="d">This element does not exist in my version.</div></div></div>
+        <div class="lrow"><div class="swatch sw-arrow"><div class="a"></div></div>
+          <div class="ltext"><div class="t">Arrow + note — REPLACE WITH</div>
+          <div class="d">Points at the thing, names what goes there instead.</div></div></div>
+        <div class="lrow"><div class="swatch sw-num"><i>1</i><i>2</i></div>
+          <div class="ltext"><div class="t">Numbers — READING ORDER</div>
+          <div class="d">The sequence you want a visitor to move through.</div></div></div>
+      </div>
+
+      <div class="warn">
+        <div class="t">Two rules that make it work</div>
+        <p><strong>Declare the legend in the prompt.</strong> Models read annotated images well — but only if you say what green and blue mean. Otherwise they're just colors.</p>
+        <p><strong>Be literal on the image, be about intent in the prompt.</strong> The image gives the model geometry. The prompt gives it a goal to resolve ambiguity against.</p>
+      </div>
+    </div>
+
+    <div class="canvas">
+      <div class="site">
+
+        <div class="mw">
+          <div class="n2">
+            <div class="lg">ARMONIA</div>
+            <div class="lk"><span>Tours</span><span>Regions</span><span>Journal</span><span>About</span><span>Contact</span></div>
+            <div class="bt">Book now</div>
+          </div>
+          <div class="ov blue"></div>
+          <div class="tag2 blue">structure only — my type, my colors</div>
+          <div class="badge-n">1</div>
+        </div>
+
+        <div class="mw">
+          <div class="h2z">
+            <h1>Armonia<br>Excursions</h1>
+            <div class="rt">The small luxury and flexible travel agency in Greece — private itineraries built around how you actually want to move.
+              <div class="lnk">Discover our tours</div></div>
+          </div>
+          <div class="ov green"></div>
+          <div class="tag2 green">keep — asymmetric split, headline left</div>
+          <div class="badge-n">2</div>
+          <div class="ann" style="right:14px;top:50%;transform:translateY(-50%)">
+            <div class="line" style="width:30px"></div>
+            <div class="lbl">replace with →<br>my one-line promise</div>
+          </div>
+        </div>
+
+        <div class="mw">
+          <div class="band2">
+            <div class="ph"></div>
+            <div class="txt"><div class="k">The Highest Level of Comfort, Convenience and Service</div>
+              <div class="p">Private vehicles, licensed guides, and a coordinator reachable for the whole trip. Nothing is templated — every route is assembled after we talk.</div></div>
+          </div>
+          <div class="ov green"></div>
+          <div class="tag2 green">keep — 60/40 photo + text pair</div>
+          <div class="badge-n">3</div>
+          <div class="ann" style="right:14px;top:50%;transform:translateY(-50%)">
+            <div class="line" style="width:30px"></div>
+            <div class="lbl">replace with →<br>a real photo of my work</div>
+          </div>
+        </div>
+
+        <div class="mw">
+          <div class="why">
+            <div class="hd">Why Choose Us?</div>
+            <div class="g">
+              <div class="c"><div class="ic"></div><div class="t">Personal touch</div><div class="d">One coordinator from first call to last transfer.</div></div>
+              <div class="c"><div class="ic"></div><div class="t">Flexibility</div><div class="d">Change the plan the morning of. It's expected.</div></div>
+              <div class="c"><div class="ic"></div><div class="t">Local knowledge</div><div class="d">Guides who live in the region they show you.</div></div>
+            </div>
+          </div>
+          <div class="ov red"></div>
+          <div class="tag2 red">remove — three generic icon columns</div>
+        </div>
+
+        <div class="mw">
+          <div class="offer">
+            <div class="list">
+              <div class="i on">Private Tours</div><div class="i">Unlimited Tours</div>
+              <div class="i">Wheelchair Accessible</div><div class="i">Multi-day Routes</div>
+            </div>
+            <div class="ph2"></div>
+          </div>
+          <div class="ov blue"></div>
+          <div class="tag2 blue">structure only — stacked list beside one image</div>
+          <div class="badge-n">4</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+<section class="sheet" id="f05">
+  <div class="sheet-tab">Fig. 05</div>
+<div class="fig">
+
+  <div class="eyebrow">Figure 5 — steps 4 & 5, the reverse-engineering</div>
+  <div class="fig-title">Never ask for a site. Ask for a spec.</div>
+  <div class="fig-sub">Asking for code makes the model interpret an image and generate a page at the same time — and it silently swaps half your reference for its defaults. Split it. The spec is a page of text where drift is visible in sixty seconds; in generated code the same drift is invisible until the result looks wrong and you can't say why.</div>
+  <div class="rule"></div>
+
+  <div class="flow">
+
+    <div class="doc corrected">
+      <div class="hd">
+        <div class="st">Step 4 — extract, then correct</div>
+        <div class="nm">Reference spec <span class="f">no code</span></div>
+      </div>
+      <div class="bd">
+        <div class="sec">LAYOUT</div>
+        <span class="l">centered hero, ~1200px</span>
+        <span class="l">art bleeds off left edge</span>
+        <span class="l">card overlaps image ~40%</span>
+        <div class="sec">TYPE</div>
+        <span class="l">H1 <span class="strike">sans-serif</span> <span class="fixed">serif</span>, 96px, w400</span>
+        <span class="l">line-height 0.95, centered</span>
+        <span class="l">eyebrow 11px CAPS, .12em</span>
+        <div class="sec">COLOR</div>
+        <span class="l"><span class="strike">accent blue on buttons</span></span>
+        <span class="l" style="white-space:normal"><span class="fixed">no accent color at all —<br>all color is in the artwork</span></span>
+        <div class="sec">PHYSICAL</div>
+        <span class="l"><span class="strike">shadows on all cards</span></span>
+        <span class="l"><span class="fixed">exactly 1 shadow, on the</span></span>
+        <span class="l"><span class="fixed">overlapping card only</span></span>
+        <span class="l">radius 4–6px · no gradients</span>
+        <div class="sec">COMPONENTS</div>
+        <span class="l">hero: headline + sub + <span class="hi">ONE</span> cta</span>
+        <span class="l">01/02/03 row, grey bars, →</span>
+      </div>
+    </div>
+
+    <div class="conn">
+      <div class="cap">you read it<br>you fix it</div>
+      <div class="ar"></div>
+      <div class="cap">60 seconds</div>
+    </div>
+
+    <div class="doc">
+      <div class="hd">
+        <div class="st">Step 1 — written once, reused forever</div>
+        <div class="nm">Your brand core <span class="f">brand.md</span></div>
+      </div>
+      <div class="bd">
+        <div class="sec">ANTI-REFERENCES</div>
+        <span class="l">3 sites I must not resemble</span>
+        <div class="sec">COLOR + BUDGET</div>
+        <span class="l">ink #151515 — text, buttons</span>
+        <span class="l">paper #FAF9F6 — background</span>
+        <span class="l">accent #D97757 — <span class="hi">&lt;5% of page</span></span>
+        <span class="l">muted #8A8A85 — captions</span>
+        <div class="sec">TYPE</div>
+        <span class="l">heading: serif, tight</span>
+        <span class="l">72 / 40 / 24 / body 17px</span>
+        <div class="sec">PHYSICAL RULES</div>
+        <span class="l">radius 4px — nothing else</span>
+        <span class="l">shadows: no · gradients: no</span>
+        <span class="l">spacing: multiples of 8px</span>
+        <div class="sec">VOICE</div>
+        <span class="l">5 lines I'd say</span>
+        <span class="l">5 lines I'd never say</span>
+        <div class="sec">ASSETS I OWN</div>
+        <span class="l">logo, product shots, photos</span>
+      </div>
+    </div>
+
+    <div class="conn">
+      <div class="cap">carry structure<br>swap tokens</div>
+      <div class="ar"></div>
+      <div class="cap">step 5</div>
+    </div>
+
+    <div class="doc final">
+      <div class="hd">
+        <div class="st">Step 5 — the only thing you build from</div>
+        <div class="nm">Your spec <span class="f">still no code</span></div>
+      </div>
+      <div class="bd">
+        <div class="sec">LAYOUT — from reference</div>
+        <span class="l">centered hero, 1200px</span>
+        <span class="l">my photo bleeds off left</span>
+        <span class="l">card overlaps by 40%</span>
+        <div class="sec">TYPE — from brand</div>
+        <span class="l">H1 serif 72px <span style="color:#A5A59D">(not 96)</span></span>
+        <span class="l">ratio kept, scale is mine</span>
+        <div class="sec">COLOR — from brand</div>
+        <span class="l">#151515 on #FAF9F6</span>
+        <span class="l">#D97757 → <span class="hi">the CTA only</span></span>
+        <div class="sec">PHYSICAL — brand wins</div>
+        <span class="l">radius 4px everywhere</span>
+        <span class="l">0 shadows <span style="color:#A5A59D">(brand overrides</span></span>
+        <span class="l" style="color:#A5A59D">the reference's one)</span>
+        <div class="sec">ASSETS I MUST SUPPLY</div>
+        <span class="l">→ hero photo, 2400px wide</span>
+        <span class="l">→ dashboard screenshot</span>
+        <div class="sec">CONFLICT FLAGGED</div>
+        <span class="l" style="white-space:normal;color:#A8492A">ref has no accent; brand has<br>one. Brand wins — CTA only.</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rules">
+    <div class="rule-card keep">
+      <div class="t"><i>carry over</i> the spatial logic</div>
+      <div class="d">Everything about where things sit and how they breathe — including what the reference deliberately left <em>out</em>.</div>
+      <div class="chips">
+        <span class="chip">section order</span><span class="chip">grid + alignment</span><span class="chip">spacing rhythm</span>
+        <span class="chip">type scale ratios</span><span class="chip">density</span><span class="chip">the overlap</span>
+        <span class="chip">one CTA, not two</span><span class="chip">what's absent</span>
+      </div>
+    </div>
+    <div class="rule-card drop">
+      <div class="t"><i>never carry</i> the style tokens</div>
+      <div class="d">Every one of these gets replaced by a value from your brand file. No exceptions, or you've just recolored someone else's website.</div>
+      <div class="chips">
+        <span class="chip">their colors</span><span class="chip">their fonts</span><span class="chip">their copy</span>
+        <span class="chip">their imagery</span><span class="chip">their personality</span><span class="chip">their radius</span>
+        <span class="chip">their shadows</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="why">
+    <div class="k">why it holds</div>
+    <p><b>The spec is the deliverable, not the site.</b> If the spec is right, the site is right — and if the model drifts three sections in, you don't re-prompt from scratch, you point back at the spec. Ask it to flag every place the reference structure conflicts with your brand rules and say which should win. That single instruction surfaces the decisions it would otherwise make silently.</p>
+  </div>
+
+</div>
+</section>
+<section class="sheet" id="f06">
+  <div class="sheet-tab">Fig. 06</div>
+<div class="fig">
+
+  <div class="eyebrow">Figure 6 — what a spec actually looks like</div>
+  <div class="fig-title">A spec is the list of decisions you took back.</div>
+  <div class="fig-sub">Not a document format to learn — just the forty decisions written down, so the model can't make them for you. The only thing people get wrong is altitude, and altitude is only visible by comparison.</div>
+  <div class="rule"></div>
+
+  <div class="wrap">
+
+    <!-- ================= LADDER ================= -->
+    <div class="ladder">
+      <div class="axis"></div>
+      <div class="axis-cap top">vague<br>↓</div>
+      <div class="axis-cap bot">↓<br>literal</div>
+
+      <div class="rung miss">
+        <div class="node"></div>
+        <div class="sample"><div class="txt">"a nice hero"</div></div>
+        <div class="verdict">
+          <div class="lab">a wish</div>
+          <div class="why"><b>40 decisions still open.</b> The model answers every one of them at its most common value.</div>
+        </div>
+      </div>
+
+      <div class="rung miss">
+        <div class="node"></div>
+        <div class="sample"><div class="txt">"a modern, clean, premium hero section"</div></div>
+        <div class="verdict">
+          <div class="lab">still a wish</div>
+          <div class="why"><b>Still 40.</b> More words is not more constraint — every one of those adjectives resolves to the average of itself.</div>
+        </div>
+      </div>
+
+      <div class="rung near">
+        <div class="node"></div>
+        <div class="sample"><div class="txt">"big serif headline, one button, lots of white space"</div></div>
+        <div class="verdict">
+          <div class="lab">feels specific — isn't</div>
+          <div class="why"><b>6 still open:</b> how big, how many lines, centred or left, button fill, corner radius, and whether anything sits behind it.</div>
+        </div>
+      </div>
+
+      <div class="rung hit">
+        <div class="node"></div>
+        <div class="band-tag" style="top:50%">the spec</div>
+        <div class="sample"><div class="txt">H1: serif, 72px, line-height 0.95, centered, max 2 lines<br>
+          Sub: sans, 17px, grey, max 3 lines<br>
+          ONE button — solid ink fill, radius 4px<br>
+          <span style="color:#B5362F">No secondary CTA. No background image. No logo strip.</span></div></div>
+        <div class="verdict">
+          <div class="lab">only one way to obey it</div>
+          <div class="why"><b>0 decisions open</b>, and still readable at a glance — which is the entire reason it beats reading code.</div>
+        </div>
+      </div>
+
+      <div class="rung over">
+        <div class="node"></div>
+        <div class="sample"><div class="txt">&lt;section class="hero mx-auto max-w-7xl px-6 pt-24"&gt;<br>
+          &nbsp;&nbsp;&lt;h1 class="font-serif text-[72px] leading-[0.95]…</div></div>
+        <div class="verdict">
+          <div class="lab">too far — that's the build</div>
+          <div class="why"><b>0 open, but 0 auditable.</b> You did the work by hand and lost the one thing a spec is for: catching drift in sixty seconds.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= TESTS ================= -->
+    <div>
+
+      <div class="card">
+        <div class="hd"><div class="n">TEST 1</div><div class="t">Only one way to obey it?</div></div>
+        <div class="bd">
+          <p>Read one line. Ask whether it could be satisfied two different ways.</p>
+          <p><b>"Big headline"</b> has a thousand valid answers. <b>"72px, max 2 lines"</b> has one. If a line has more than one right answer, the model picks — and it picks the most common.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="hd"><div class="n">TEST 2</div><div class="t">The two-builders test</div></div>
+        <div class="bd">
+          <p>Paste your spec into two fresh sessions. Build it twice, from nothing.</p>
+          <div class="t2">
+            <div class="spec"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="fork"><span></span></div>
+            <div class="outs">
+              <div class="mini"><div class="h"></div><div class="c"><i></i><i></i><i></i></div></div>
+              <div class="mini"><div class="h"></div><div class="c"><i></i><i></i><i></i></div><div class="ok">✓</div></div>
+            </div>
+          </div>
+          <div class="verd-line"><b>Same page →</b> it's a spec. Wherever the two diverge is exactly where slop gets in — those gaps are your unmade decisions, and the test finds them for you.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="card">
+      <div class="hd"><div class="n">SIZE</div><div class="t">Length is the forcing function</div></div>
+      <div class="bd">
+        <div class="len">
+          <div class="side"><div class="big">1 page</div><div class="sm">60 seconds</div></div>
+          <div class="txt">The whole point is that you can audit it at a glance. At eight pages you won't read it, you won't catch the drift, and you've written the build by hand in a worse format. The size limit is what sets the detail level.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="hd"><div class="n">TRAP</div><div class="t">The absences are spec too</div></div>
+      <div class="bd">
+        <p>Beginners only write what should exist. That leaves every <em>shouldn't</em> open — and the model's defaults are almost entirely shouldn'ts.</p>
+        <div class="abs">
+          <span class="x">No gradients.</span><span class="x">No secondary CTA.</span>
+          <span class="x">No accent color.</span><span class="x">No shadows.</span>
+          <span class="x">No logo strip.</span><span class="x">Nothing pill-shaped.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+<section class="sheet" id="f07">
+  <div class="sheet-tab">Fig. 07</div>
+<div class="fig">
+
+  <div class="eyebrow">Figure 7 — step 7, the slop filter</div>
+  <div class="fig-title">Twelve tells. Three or more and you shipped the average.</div>
+  <div class="fig-sub">None of these are ugly. That's what makes them hard to catch — they're competent, and they're on ten thousand other sites.</div>
+  <div class="rule"></div>
+
+  <div class="grid">
+
+    <div class="cell"><div class="demo"><div class="d-grad"></div></div>
+      <div class="cap"><div class="t"><i>✕</i>Purple→blue gradient</div><div class="d">The single most reliable AI fingerprint.</div></div></div>
+
+    <div class="cell"><div class="demo"><div class="d-glow"></div></div>
+      <div class="cap"><div class="t"><i>✕</i>The glow orb</div><div class="d">Blurred light behind the hero. Decoration with no meaning.</div></div></div>
+
+    <div class="cell"><div class="demo"><div class="d-cards"><div class="c"><div class="ic"></div><div class="l"></div><div class="l2"></div></div><div class="c"><div class="ic"></div><div class="l"></div><div class="l2"></div></div><div class="c"><div class="ic"></div><div class="l"></div><div class="l2"></div></div></div></div>
+      <div class="cap"><div class="t"><i>✕</i>Three icon cards</div><div class="d">Icon in a rounded square, bold title, two grey lines.</div></div></div>
+
+    <div class="cell"><div class="demo"><div class="d-shadow"><div class="s"></div><div class="s"></div><div class="s"></div></div></div>
+      <div class="cap"><div class="t"><i>✕</i>A shadow on everything</div><div class="d">Real pages use one, or none. Default to none.</div></div></div>
+
+    <div class="cell"><div class="demo"><div class="d-glass"><div class="p"></div></div></div>
+      <div class="cap"><div class="t"><i>✕</i>Glassmorphism</div><div class="d">Frosted translucent panels. Dated the day it trended.</div></div></div>
+
+    <div class="cell"><div class="demo"><div class="d-center"><div class="axis"></div><div class="l a"></div><div class="l b"></div><div class="l c"></div><div class="b"></div></div></div>
+      <div class="cap"><div class="t"><i>✕</i>Everything centered</div><div class="d">Zero asymmetry anywhere on the page.</div></div></div>
+
+    <div class="cell"><div class="demo"><div class="d-rhythm"><div class="r"><div class="h"></div><div class="cc"><i></i><i></i><i></i></div></div><div class="r"><div class="h"></div><div class="cc"><i></i><i></i><i></i></div></div><div class="r"><div class="h"></div><div class="cc"><i></i><i></i><i></i></div></div></div></div>
+      <div class="cap"><div class="t"><i>✕</i>One rhythm, repeated</div><div class="d">Heading, subheading, three cards. Then again. Then again.</div></div></div>
+
+    <div class="cell"><div class="demo"><div class="d-emoji"><span>🚀</span><span>⚡</span><span>🎯</span></div></div>
+      <div class="cap"><div class="t"><i>✕</i>Emoji as icons</div><div class="d">Instantly reads as a placeholder nobody replaced.</div></div></div>
+
+    <div class="cell"><div class="demo"><div class="d-logos"><div class="cap2">Trusted by</div><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div></div></div>
+      <div class="cap"><div class="t"><i>✕</i>Borrowed logo strip</div><div class="d">Companies that were never your customers.</div></div></div>
+
+    <div class="cell"><div class="demo"><div class="d-radius"><div class="b sm"></div><div class="b"></div><div class="b lg"></div></div></div>
+      <div class="cap"><div class="t"><i>✕</i>12px on every corner</div><div class="d">Including the things that shouldn't be rounded at all.</div></div></div>
+
+    <div class="cell"><div class="demo"><div class="d-ctas"><div class="b">Start Free</div><div class="b o">Book Demo</div></div></div>
+      <div class="cap"><div class="t"><i>✕</i>Two equal CTAs</div><div class="d">You gave the visitor a decision instead of an action.</div></div></div>
+
+    <div class="cell"><div class="demo"><div class="d-blob"><div class="o"></div></div></div>
+      <div class="cap"><div class="t"><i>✕</i>The abstract 3D blob</div><div class="d">Or faceless stock people. Filler where an asset should be.</div></div></div>
+
+  </div>
+
+  <div class="gate">
+    <div class="lft">
+      <div class="k">the final gate</div>
+      <div class="n">Passing the checklist<br>is not the same<br>as designing.</div>
+    </div>
+    <div class="rgt">
+      <div class="q">Point to one thing on this page an AI would never have chosen on its own.</div>
+      <div class="a">Not "it avoids the tells" — that's just a cleaner average. One choice that could only have come from <b>you</b>:</div>
+      <div class="ex">
+        <span>your own photograph</span><span>a weird type pairing</span><span>a headline in your speaking voice</span>
+        <span>a section that breaks the grid on purpose</span><span>a color nobody in your industry uses</span><span>a real number</span>
+      </div>
+      <div class="a" style="margin-top:2px">If you can't point to it, you didn't design anything — you accepted a default. <b>Go back to step 2 and hunt harder.</b></div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+  <div class="colophon">Figures 1–7 · self-contained · print to PDF for one figure per page</div>
+</div>
+</body></html>
