@@ -21,4 +21,4 @@ Des prompts vagues ("moderne, épuré, premium") ne donnent au modèle aucune co
 
 C'est le processus derrière le travail de design web piloté par IA dans ce portfolio — ce qui empêche un rendu automatisé de ressembler à du contenu IA générique, et transforme un brief vague en quelque chose qu'on peut vraiment imposer à un modèle.
 
-→ **[Figure set en direct](GITHUB_PAGES_LINK_PLACEHOLDER)** — les 7 figures, avec un exemple avant/après complet
+→ **[Figure set en direct](https://mohamed-benkirane1.github.io/web-dev-agent/)** — les 7 figures, avec un exemple avant/après complet
